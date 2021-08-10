@@ -82,9 +82,10 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox-nginx:master_2021-08-10T22_25_46_02_00"
+    image: "quay.io/pcdc/gearbox-nginx:master_2021-08-10T22_42_55_02_00"
     container_name: portal-service
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    command: ["sh", "/dockerStart.sh"]
     # ports:
     #   - "80:80"
       # - "443:443"
