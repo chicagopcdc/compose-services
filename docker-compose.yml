@@ -82,7 +82,7 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox-nginx:master_2021-07-14T14_19_12-05_00"
+    image: "quay.io/pcdc/gearbox-nginx:master_2021-08-10T22_25_46_02_00"
     container_name: portal-service
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     # ports:
@@ -90,8 +90,9 @@ services:
       # - "443:443"
     networks: 
       - devnet
-    volumes: 
-      - ./data/nginx:/etc/nginx/conf.d
+    # volumes:
+    #   - ./scripts/waitForContainers.sh:/waitForContainers.sh 
+      # - ./data/nginx:/etc/nginx/conf.d
     # healthcheck:
     #   test: ["CMD-SHELL", "curl -f http://localhost"]
     #   interval: 60s
