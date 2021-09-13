@@ -20,7 +20,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
   fence-service:
-    image: "quay.io/pcdc/fence:pcdc_dev_2021-08-03T16_13_42-05_00"
+    image: "quay.io/pcdc/fence:2021.08"
     command: bash /var/www/fence/fence_setup.sh
     container_name: fence-service
     networks:
@@ -82,7 +82,7 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox-nginx:master_2021-08-23T16_39_26-05_00"
+    image: "quay.io/pcdc/gearbox-nginx:master_2021-09-13T10_26_07-05_00"
     container_name: portal-service
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     # command: ["sh", "/dockerStart.sh"]
