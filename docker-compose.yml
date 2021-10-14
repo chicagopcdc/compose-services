@@ -66,7 +66,7 @@ services:
     depends_on:
       - postgres
   metadata-service:
-    image: "quay.io/cdis/metadata-service:2021.10"
+    image: "quay.io/pcdc/gearbox_be:pcdc_dev_2021-10-14T09_53_39-05_00"
     # image: "mds:test"
     container_name: metadata-service
     depends_on:
