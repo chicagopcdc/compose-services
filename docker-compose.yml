@@ -65,23 +65,23 @@ services:
       retries: 10
     depends_on:
       - postgres
-  metadata-service:
-    image: "quay.io/pcdc/gearbox_be:pcdc_dev_2021-10-14T09_53_39-05_00"
-    # image: "mds:test"
-    container_name: metadata-service
+  gearbox-service:
+    # image: "quay.io/pcdc/gearbox_be:pcdc_dev_2021-10-14T09_53_39-05_00"
+    image: "mds:test"
+    container_name: gearbox-service
     depends_on:
       - postgres
     environment:
       - DB_HOST=postgres
-      - DB_USER=metadata_user
-      - DB_PASSWORD=metadata_pass
-      - DB_DATABASE=metadata
+      - DB_USER=gearbox_trials_user
+      - DB_PASSWORD=gearbox_trials_pass
+      - DB_DATABASE=gearbox_trials
       - DB_PORT=5432
       - ALLOWED_ISSUERS=http://fence-service/,https://localhost/user
       - USER_API=http://fence-service/
       - FORCE_ISSUER=True
     command: >
-      sh -c "/env/bin/alembic upgrade head && /env/bin/uvicorn --host 0.0.0.0 --port 80 mds.asgi:app --reload"
+      sh -c "/env/bin/alembic upgrade head && /env/bin/uvicorn --host 0.0.0.0 --port 80 gearbox.asgi:app --reload"
     networks:
       - devnet
   portal-service:
@@ -150,7 +150,7 @@ services:
       - arborist-service
       - fence-service
       - portal-service
-      - metadata-service
+      - gearbox-service
 
 networks:
   devnet:
