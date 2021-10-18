@@ -43,7 +43,7 @@ services:
       - postgres
       - arborist-service
   arborist-service:
-    image: "quay.io/cdis/arborist:2021.09"
+    image: "quay.io/cdis/arborist:2021.10"
     container_name: arborist-service
     entrypoint: bash /go/src/github.com/uc-cdis/arborist/arborist_setup.sh
     networks:
@@ -73,9 +73,9 @@ services:
       - postgres
     environment:
       - DB_HOST=postgres
-      - DB_USER=gearbox_trials_user
-      - DB_PASSWORD=gearbox_trials_pass
-      - DB_DATABASE=gearbox_trials
+      - DB_USER=gearbox_user
+      - DB_PASSWORD=gearbox_pass
+      - DB_DATABASE=gearbox
       - DB_PORT=5432
       - ALLOWED_ISSUERS=http://fence-service/,https://localhost/user
       - USER_API=http://fence-service/
@@ -85,7 +85,7 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox_fe:dev_2021-10-06T16_35_21-05_00"
+    image: "quay.io/pcdc/gearbox_fe:dev_2021-10-18T11_23_19-05_00"
     container_name: portal-service
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     # command: ["sh", "/dockerStart.sh"]
@@ -130,7 +130,7 @@ services:
     #   - peregrine-service
     #   - sheepdog-service
   revproxy-service:
-    image: "quay.io/cdis/nginx:2021.09"
+    image: "quay.io/cdis/nginx:2021.10"
     container_name: revproxy-service
     networks:
       - devnet

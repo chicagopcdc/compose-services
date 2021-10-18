@@ -6,11 +6,11 @@ CREATE DATABASE metadata_db; -- Used by sheepdog and peregrine (called "sheepdog
 CREATE DATABASE fence_db;
 CREATE DATABASE indexd_db;
 CREATE DATABASE arborist_db;
-CREATE DATABASE gearbox_trials;
+CREATE DATABASE gearbox;
 
-CREATE USER gearbox_trials_user;
-ALTER USER gearbox_trials_user WITH PASSWORD 'gearbox_trials_pass';
-ALTER USER gearbox_trials_user WITH SUPERUSER;
+CREATE USER gearbox_user;
+ALTER USER gearbox_user WITH PASSWORD 'gearbox_pass';
+ALTER USER gearbox_user WITH SUPERUSER;
 
 CREATE USER metadata_user;
 ALTER USER metadata_user WITH PASSWORD 'metadata_pass';
