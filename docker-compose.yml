@@ -84,36 +84,12 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox_fe:dev_2021-10-19T15_45_42-05_00"
+    image: "quay.io/pcdc/gearbox_fe:align_deployment_Thu__21_Oct_2021_15_31_44_GMT"
     container_name: portal-service
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    # command: ["sh", "/dockerStart.sh"]
-    # ports:
-    #   - "80:80"
-      # - "443:443"
+    # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    command: ["/bin/bash", "./dockerStart.sh"] 
     networks: 
       - devnet
-    # volumes:
-    #   - ./scripts/waitForContainers.sh:/waitForContainers.sh 
-      # - ./data/nginx:/etc/nginx/conf.d
-    # healthcheck:
-    #   test: ["CMD-SHELL", "curl -f http://localhost"]
-    #   interval: 60s
-    #   timeout: 5s
-    #   retries: 10
-    depends_on:
-      - postgres
-  # portal-service:
-    # image: "quay.io/cdis/data-portal:2021.03"
-    # container_name: portal-service
-    # command: ["bash", "/var/www/data-portal/waitForContainers.sh"]
-    # networks:
-    #   - devnet
-    # volumes:
-    #   - ./scripts/waitForContainers.sh:/var/www/data-portal/waitForContainers.sh
-    #   - ./Secrets/gitops.json:/data-portal/data/config/gitops.json
-    #   - ./Secrets/gitops-logo.png:/data-portal/custom/logo/gitops-logo.png
-    #   - ./Secrets/gitops.png:/data-portal/custom/createdby/gitops.png
     # environment:
     #   - NODE_ENV=dev
     #   #- MOCK_STORE=true
@@ -124,10 +100,9 @@ services:
     #   interval: 60s
     #   timeout: 5s
     #   retries: 10
-    # depends_on:
-    #   - postgres
-    #   - peregrine-service
-    #   - sheepdog-service
+    depends_on:
+      - postgres
+      - gearbox-service
   revproxy-service:
     image: "quay.io/cdis/nginx:2021.10"
     container_name: revproxy-service
@@ -155,4 +130,3 @@ networks:
   devnet:
 volumes:
   psqldata_gear:
-  esdata_gear:
