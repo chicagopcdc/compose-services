@@ -20,7 +20,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
   fence-service:
-    image: "quay.io/pcdc/fence:pcdc_dev_2021-09-16T13_51_21-05_00"
+    image: "quay.io/pcdc/fence:pcdc_dev_2021-11-05T13_32_54-05_00"
     command: bash /var/www/fence/fence_setup.sh
     container_name: fence-service
     networks:
@@ -43,7 +43,7 @@ services:
       - postgres
       - arborist-service
   arborist-service:
-    image: "quay.io/cdis/arborist:2021.10"
+    image: "quay.io/cdis/arborist:2021.11"
     container_name: arborist-service
     entrypoint: bash /go/src/github.com/uc-cdis/arborist/arborist_setup.sh
     networks:
@@ -84,7 +84,7 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox_fe:align_deployment_Thu__21_Oct_2021_15_31_44_GMT"
+    image: "quay.io/pcdc/gearbox_fe:dev_2021-11-08T13_58_51-06_00"
     container_name: portal-service
     # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     command: ["/bin/bash", "./dockerStart.sh"] 
@@ -104,7 +104,7 @@ services:
       - postgres
       - gearbox-service
   revproxy-service:
-    image: "quay.io/cdis/nginx:2021.10"
+    image: "quay.io/cdis/nginx:2021.11"
     container_name: revproxy-service
     networks:
       - devnet
