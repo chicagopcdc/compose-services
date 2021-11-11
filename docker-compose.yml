@@ -20,7 +20,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
   fence-service:
-    image: "quay.io/pcdc/fence:1.0.0"
+    image: "quay.io/pcdc/fence:1.0.1"
     command: bash /var/www/fence/fence_setup.sh
     container_name: fence-service
     networks:
