@@ -187,6 +187,24 @@ OPENID_CONNECT:
     # and that IdP is a SAML IdP with no 'email_verified' outgoing claim, but it is safe
     # to assume all emails from this SAML IdP are in fact verified, we may set this to True
     assume_emails_verified: False
+  okta:
+    discovery_url: ''
+    client_id: ''
+    client_secret: ''
+    redirect_url: '{{BASE_URL}}/login/okta/login/'
+  # CILogon subscribers can create and manage OIDC clients using COmanage Registry.
+  # Free tier users may request OIDC clients at https://cilogon.org/oauth2/register
+  cilogon:
+    client_id: ''
+    client_secret: ''
+    # When registering the Callback URLs for your CILogon OIDC client be
+    # sure to include the FULL url for this deployment, including the https:// scheme
+    # and server FQDN.
+    redirect_url: '{{BASE_URL}}/login/cilogon/login/'
+    # if mock is true, will fake a successful login response for login
+    # WARNING: DO NOT ENABLE IN PRODUCTION (for testing purposes only)
+    mock: false
+    mock_default_user: 'http://cilogon.org/serverT/users/64703'
   shibboleth:
     client_id: ''
     client_secret: ''
@@ -592,7 +610,6 @@ INDEXD_PASSWORD: ''
 
 # url where role-based access control microservice is running
 ARBORIST: http://arborist-service
-
 BASIC_REGISTRATION_ACCESS_POLICY: [login_no_access]
 
 # url where the audit-service is running
