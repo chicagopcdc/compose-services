@@ -20,28 +20,6 @@ authz:
     # - name: indexd_admins
     #   policies:
     #   - indexd_admin
-    #   users:authz:
-
-    # # policies automatically given to anyone, even if they are not authenticated
-    # anonymous_policies:
-    # - open_data_reader
-
-    # # policies automatically given to authenticated users (in addition to their other policies)
-    # all_users_policies: []
-
-    # groups:
-    # # can CRUD programs and projects and upload data files
-    # - name: data_submitters
-    #   policies:
-    #   - services.sheepdog-admin
-    #   - data_upload
-    #   users:
-    #   - username1@gmail.com
-
-    #  # can create/update/delete indexd records
-    # - name: indexd_admins
-    #   policies:
-    #   - indexd_admin
     #   users:
     #   - username1@gmail.com
 
@@ -49,7 +27,6 @@ authz:
         - name: portal
           description: data portal service
         - name: gearbox_gateway
-
 
 
     policies:
@@ -125,106 +102,19 @@ authz:
 users:
   graglia01@gmail.com:
     admin: True
-    policies: ['login_no_access', 'gearbox_admin']
+    policies: ['gearbox_admin']
   shea.maunsell@gmail.com:
-    policies: [login_no_access]
+    policies: []
   slv@uchicago.edu:
     admin: True
-    policies: ['login_no_access']
+    policies: []
   furner.brian@gmail.com:
-    policies: ['login_no_access']
+    policies: []
   bkang.dev@gmail.com:
-    policies: ['login_no_access',]
+    policies: []
   dvenckus@uchicago.edu:
     admin: True
-    policies: ['login_no_access']
-  
-
-
-# for instruction visit: https://github.com/uc-cdis/fence/blob/master/docs/user.yaml_guide.md
-
-    #   - username1@gmail.com
-
-    resources:
-        - name: portal
-          description: data portal service
-
-
-    policies:
-      - id: login_no_access
-        role_ids:
-        - reader
-        resource_paths:
-        - /portal
-     
-    
-    roles:
-      - id: admin
-        permissions:
-          - id: admin
-            action:
-              service: '*'
-              method: '*'
-      - id: creator
-        permissions:
-          - id: creator
-            action:
-              service: '*'
-              method: create
-      - id: reader
-        permissions:
-          - id: reader
-            action:
-              service: '*'
-              method: read
-      - id: updater
-        permissions:
-          - id: updater
-            action:
-              service: '*'
-              method: update
-      - id: deleter
-        permissions:
-          - id: deleter
-            action:
-              service: '*'
-              method: delete
-      - id: storage_writer
-        permissions:
-          - id: storage_creator
-            action:
-              service: '*'
-              method: write-storage
-      - id: storage_reader
-        permissions:
-          - id: storage_reader
-            action:
-              service: '*'
-              method: read-storage  
-
-
-# clients:
-#   wts:
-#     policies:
-#     - all_programs_reader
-#     - open_data_reader
-
-users:
-  graglia01@gmail.com:
-    admin: True
-    policies: ['login_no_access']
-  shea.maunsell@gmail.com:
-    policies: [login_no_access]
-  slv@uchicago.edu:
-    admin: True
-    policies: ['login_no_access']
-  furner.brian@gmail.com:
-    policies: ['login_no_access']
-  bkang.dev@gmail.com:
-    policies: ['login_no_access',]
-  dvenckus@uchicago.edu:
-    admin: True
-    policies: ['login_no_access']
+    policies: []
   
 
 
