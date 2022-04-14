@@ -112,9 +112,6 @@ users:
     policies: []
   bkang.dev@gmail.com:
     policies: []
-  dvenckus@uchicago.edu:
-    admin: True
-    policies: []
   
 
 
