@@ -9,4 +9,4 @@ DOCUMENT_JSON='{"type": "privacy-policy", "version": 2, "name": "Privacy Policy"
 curl -X POST -k  -H "Content-Type: application/json" -H "Authorization: Bearer $ACCESS_TOKEN" -d "$DOCUMENT_JSON" https://localhost/user/admin/add_document
 
 # echo "Remove portal resource from all users"
-curl -X POST -k  -H "Content-Type: application/json" -H "Authorization: Bearer $ACCESS_TOKEN" https://localhost/user/admin/revoke_permission
+curl -X POST -k  -H "Authorization: Bearer $ACCESS_TOKEN" https://localhost/user/admin/revoke_permission
