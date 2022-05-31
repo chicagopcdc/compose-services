@@ -86,7 +86,7 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox_fe:1.0.0"
+    image: "quay.io/pcdc/gearbox_fe:dev_2022-05-31T12_16_30-05_00"
     # image: "gearbox_fe:test"
     container_name: portal-service
     # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
