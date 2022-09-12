@@ -16,6 +16,11 @@ until curl -f -s -o /dev/null http://arborist-service/policy; do
     sleep 10
 done
 
+tmp_path=$(pwd)
+cd /fence
+fence-create migrate
+
+cd $tmp_path
 fence-create sync --yaml user.yaml --arborist http://arborist-service
 
 cd /fence
