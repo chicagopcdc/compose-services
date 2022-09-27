@@ -38,7 +38,7 @@ services:
   #   depends_on:
   #     - postgres
   fence-service:
-    image: "quay.io/pcdc/fence:1.7.0"
+    image: "quay.io/pcdc/fence:pcdc_dev_2022-09-27T11_47_11-05_00"
     # image: "fence:test"
     # build: ../fence
     # image: fence:01
@@ -61,7 +61,6 @@ services:
     environment:
       - PYTHONPATH=/var/www/fence
       - GEN3_DEBUG=True
-      - DD_ENABLED=False
     depends_on:
       - postgres
       - arborist-service
@@ -276,7 +275,7 @@ services:
   #   depends_on:
   #     - peregrine-service
   portal-service:
-    image: "quay.io/pcdc/windmill:1.9.0"
+    image: "quay.io/pcdc/windmill:pcdc_dev_2022-09-27T09_09_05-05_00"
     container_name: portal-service
     command: ["bash", "/var/www/data-portal/waitForContainers.sh"]
     networks:
