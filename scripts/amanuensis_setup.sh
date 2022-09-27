@@ -11,7 +11,10 @@ echo "postgres is ready"
 
 update-ca-certificates
 
-# python /sheepdog/bin/setup_transactionlogs.py --host postgres --user sheepdog_user --password sheepdog_pass --database metadata_db
 cd /amanuensis
+fence-create migrate
+
+# python /sheepdog/bin/setup_transactionlogs.py --host postgres --user sheepdog_user --password sheepdog_pass --database metadata_db
+# cd /amanuensis
 /dockerrun.sh
 # bash /dockerrun.sh
