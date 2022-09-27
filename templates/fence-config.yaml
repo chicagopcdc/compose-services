@@ -401,7 +401,7 @@ RENEW_ACCESS_TOKEN_BEFORE_EXPIRATION: false
 # PRIVACY_POLICY_URL, or default to the `static/privacy_policy.md` file in fence.
 PRIVACY_POLICY_URL: null
 
-DOCUMENT_TYPES: ['privacy-policy', 'terms-and-conditions', 'survival-user-agreement', 'data-portal-user-guide', 'portal-acceptable-use-policy']
+DOCUMENT_TYPES: ['privacy-policy', 'terms-and-conditions', 'survival-user-agreement', 'portal-acceptable-use-policy', 'data-portal-user-guide']
 INITIAL_DOCUMENTS:
   'privacy-policy':
     type: "privacy-policy"
@@ -423,6 +423,20 @@ INITIAL_DOCUMENTS:
     name: "Survival Curve Use Agreement"
     raw: ""
     formatted: ""
+    required: false
+  'portal-acceptable-use-policy':
+    type: "portal-acceptable-use-policy"
+    version: 1
+    name: "Data Portal Acceptable Use Policy"
+    raw: "https://github.com/chicagopcdc/chicagopcdc.github.io/blob/2.0.0/docs/AcceptableUsePolicy.md"
+    formatted: "https://docs.pedscommons.org/AcceptableUsePolicy/"
+    required: true
+  'data-portal-user-guide':
+    type: "data-portal-user-guide"
+    version: 1
+    name: "Data Portal User Guide"
+    raw: "https://github.com/chicagopcdc/chicagopcdc.github.io/blob/2.0.0/docs/DataPortalUserGuide.md"
+    formatted: "https://docs.pedscommons.org/DataPortalUserGuide/"
     required: false
 
 # //////////////////////////////////////////////////////////////////////////////////////
