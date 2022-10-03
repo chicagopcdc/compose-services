@@ -20,7 +20,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
   fence-service:
-    image: "quay.io/pcdc/fence:pcdc_dev_2022-07-07T18_15_41-05_00"
+    image: "quay.io/pcdc/fence:pcdc_dev_2022-09-27T11_47_11-05_00"
     # image: "fence:test"
     command: bash /var/www/fence/fence_setup.sh
     container_name: fence-service
@@ -40,12 +40,11 @@ services:
     environment:
       - PYTHONPATH=/var/www/fence
       - GEN3_DEBUG=True
-      - DD_ENABLED=""
     depends_on:
       - postgres
       - arborist-service
   arborist-service:
-    image: "quay.io/cdis/arborist:2022.07"
+    image: "quay.io/cdis/arborist:2022.10"
     container_name: arborist-service
     entrypoint: bash /go/src/github.com/uc-cdis/arborist/arborist_setup.sh
     networks:
@@ -86,7 +85,7 @@ services:
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox_fe:dev_2022-06-16T09_24_54-05_00"
+    image: "quay.io/pcdc/gearbox_fe:dev_2022-10-03T09_53_59-05_00"
     # image: "gearbox_fe:test"
     container_name: portal-service
     # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
@@ -107,7 +106,7 @@ services:
       - postgres
       - gearbox-service
   revproxy-service:
-    image: "quay.io/cdis/nginx:2022.07"
+    image: "quay.io/cdis/nginx:2022.10"
     container_name: revproxy-service
     networks:
       - devnet
