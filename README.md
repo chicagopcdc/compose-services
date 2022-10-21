@@ -18,3 +18,27 @@ You can quickly find commonly used commands in our [cheat sheet](./docs/cheat_sh
 * [Dev Tips](docs/dev_tips.md)
 * [Using the Data Commons](docs/using_the_commons.md)
 * [Useful links](docs/useful_links.md)
+
+
+DEPLOY ON EC2
+https://stackoverflow.com/questions/35868976/nginx-job-for-nginx-service-failed-because-the-control-process-exited/58332311
+https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx
+
+Go to https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx, and follow the instructions to install certbot
+make sure port 80 is open, docker isn’t running portal/revproxy, and run sudo certbot certonly --nginx and that a local not docker nginx instance is running
+copy the files created, most likely something like
+
+1)open firewall
+
+if renewing:
+Run `docker stop revproxy-service` and run `sudo certbot renew`
+
+# Certificate is saved at: /etc/letsencrypt/live/gearbox-dev.pedscommons.org/fullchain.pem
+# Key is saved at:         /etc/letsencrypt/live/gearbox-dev.pedscommons.org/privkey.pem
+sudo cp /etc/letsencrypt/live/gearbox-dev.pedscommons.org/privkey.pem ~/compose-services/Secrets/TLS/service.key
+sudo cp /etc/letsencrypt/live/gearbox-dev.pedscommons.org/fullchain.pem ~/compose-services/Secrets/TLS/service.crt
+
+maybe sudo systemctl stop nginx.service
+sudo lsof -i -P -n | grep 80 and kill
+sudo kill -9
+docker-compose up -d

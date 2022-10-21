@@ -67,7 +67,7 @@ services:
     depends_on:
       - postgres
   gearbox-service:
-    image: "quay.io/pcdc/gearbox_be:pcdc_dev_2022-06-30T14_53_09-05_00"
+    image: "quay.io/pcdc/gearbox_be:pcdc_dev_2022-10-20T12_36_51-05_00"
     container_name: gearbox-service
     depends_on:
       - postgres
@@ -80,12 +80,14 @@ services:
       - ALLOWED_ISSUERS=http://fence-service/,https://localhost/user
       - USER_API=http://fence-service/
       - FORCE_ISSUER=True
+      - DUMMY_S3=True
+
     command: >
       sh -c "/env/bin/alembic upgrade head && /env/bin/uvicorn --host 0.0.0.0 --port 80 gearbox.asgi:app --reload"
     networks:
       - devnet
   portal-service:
-    image: "quay.io/pcdc/gearbox_fe:dev_2022-10-03T09_53_59-05_00"
+    image: "quay.io/pcdc/gearbox_fe:dev_2022-10-17T21_34_37-05_00"
     # image: "gearbox_fe:test"
     container_name: portal-service
     # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
