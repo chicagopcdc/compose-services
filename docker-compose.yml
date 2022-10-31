@@ -67,7 +67,7 @@ services:
     depends_on:
       - postgres
   gearbox-service:
-    image: "quay.io/pcdc/gearbox_be:pcdc_dev_2022-10-20T12_36_51-05_00"
+    image: "quay.io/pcdc/gearbox_be:pcdc_dev_2022-10-24T13_00_20-05_00"
     container_name: gearbox-service
     depends_on:
       - postgres
