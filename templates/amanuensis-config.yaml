@@ -99,6 +99,7 @@ USER_API: 'http://fence-service/'
 # token when redirecting, used during local docker compose setup when the
 # services are on different containers but the hostname is still localhost
 FORCE_ISSUER: true
+AUDIENCE: 'https://{{HOSTNAME}}/user'
 
 # amanuensis (at the moment) attempts a migration on startup. setting this to false will disable that
 # WARNING: ONLY set to false if you do NOT want to automatically migrate your database.
