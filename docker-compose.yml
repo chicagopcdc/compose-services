@@ -175,7 +175,7 @@ services:
     depends_on:
       - postgres
   amanuensis-service:
-    image: "quay.io/pcdc/amanuensis:pcdc_dev_2022-11-21T09_13_36-06_00" 
+    image: "quay.io/pcdc/amanuensis:pcdc_dev_2022-11-30T09_06_04-06_00" 
     # image: "amanuensis:test"
     # build: ../amanuensis
     # image: amanuensis:02
